@@ -130,6 +130,10 @@ $(call inherit-product, vendor/ryzen/config/rro_overlays.mk)
 # Packages
 include vendor/ryzen/config/packages.mk
 
+# Themes
+PRODUCT_PACKAGES += \
+    BlackTheme
+
 # Props
 include vendor/ryzen/config/props.mk
 
