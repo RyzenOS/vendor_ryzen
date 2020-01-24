@@ -177,7 +177,8 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Use the default charger mode images
 PRODUCT_PACKAGES += \
-    charger_res_images
+    charger_res_images \
+    product_charger_res_images
 
 # CustomPixelLauncherOverlay
 PRODUCT_PACKAGES += \
