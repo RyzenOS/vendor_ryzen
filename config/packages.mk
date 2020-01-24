@@ -34,3 +34,9 @@ TARGET_INCLUDE_STOCK_ARCORE ?= true
 TARGET_INCLUDE_LIVE_WALLPAPERS ?= true
 TARGET_SUPPORTS_QUICK_TAP ?= false
 
+# Offline charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images
+
+
