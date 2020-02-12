@@ -92,4 +92,5 @@ include vendor/ryzen/config/version.mk
 # Include Common packages
 include vendor/ryzen/config/packages.mk
 
-
+# Fonts
+include vendor/aosp/config/fonts.mk
