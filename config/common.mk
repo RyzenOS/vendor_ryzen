@@ -79,11 +79,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/ryzen/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/ryzen/overlay/common
 
-# Audio
-$(call inherit-product, vendor/ryzen/config/audio.mk)
-
-# GMS
-$(call inherit-product, vendor/gms/products/gms.mk)
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/ryzen/build/target/product/security/ryzen
@@ -97,5 +92,8 @@ include vendor/ryzen/config/version.mk
 # Include Common packages
 include vendor/ryzen/config/packages.mk
 
+# Audio
+include vendor/ryzen/config/audio.mk
+
 # Fonts
-include vendor/aosp/config/fonts.mk
+include vendor/ryzen/config/fonts.mk
