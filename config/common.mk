@@ -82,6 +82,9 @@ $(call inherit-product, vendor/gms/products/gms.mk)
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/ryzen/build/target/product/security/ryzen
+    
+# Bootanimation
+$(call inherit-product, vendor/ryzen/config/bootanimation.mk)
 
 # Include Version
 include vendor/ryzen/config/version.mk
