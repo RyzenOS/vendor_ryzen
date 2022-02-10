@@ -28,4 +28,8 @@ PRODUCT_PACKAGES += \
     GoogleConfigOverlay \
     SystemUIGoogleOverlay \
     StorageManagerGoogleOverlay \
-    FlipendoOverlay
+    FlipendoOverlay \
+    CustomPixelLauncherOverlay \
+    RyzenSetupOverlay \
+    NavigationBarModeGesturalOverlayFS \
+    MediaProviderOverlay
