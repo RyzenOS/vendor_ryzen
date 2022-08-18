@@ -118,7 +118,11 @@ include vendor/ryzen/config/audio.mk
 include vendor/ryzen/config/bootanimation.mk
 
 # GMS
-include vendor/ryzen/config/gms.mk
+$(call inherit-product, vendor/gms/gms_mini.mk)
+TARGET_SUPPORTS_GOOGLE_RECORDER ?= false
+TARGET_INCLUDE_STOCK_ARCORE ?= false
+TARGET_INCLUDE_LIVE_WALLPAPERS ?= false
+TARGET_SUPPORTS_QUICK_TAP ?= true
 
 # Packages
 include vendor/ryzen/config/packages.mk
