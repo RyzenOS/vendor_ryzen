@@ -36,4 +36,11 @@
         <item>android</item>
         <item>com.android.systemui</item>
     </array>
+    <string-array name="config_defaultCloudSearchServices" translatable="false">
+        <item>com.android.vending/com.google.android.finsky.cloudsearch.PlayCloudSearchService</item>
+        <item>com.android.chrome/com.google.android.apps.chrome.cloudsearch.ChromeCloudSearchService</item>
+        <item>com.chrome.canary/com.google.android.apps.chrome.cloudsearch.ChromeCloudSearchService</item>
+        <item>com.chrome.dev/com.google.android.apps.chrome.cloudsearch.ChromeCloudSearchService</item>
+        <item>com.chrome.beta/com.google.android.apps.chrome.cloudsearch.ChromeCloudSearchService</item>
+    </string-array>
 </resources>

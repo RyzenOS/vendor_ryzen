@@ -13,5 +13,6 @@
     <bool name="config_swipe_up_gesture_setting_available">true</bool>
     <bool name="config_systemCaptionsServiceCallsEnabled">true</bool>
     <bool name="config_useRoundIcon">true</bool>
+    <bool name="config_systemCaptionsServiceCallsEnabled">true</bool>
     <!--bool name="config_volumeAdjustmentForRemoteGroupSessions">false</bool-->
 </resources>
