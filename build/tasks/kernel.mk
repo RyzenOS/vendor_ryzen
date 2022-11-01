@@ -31,6 +31,8 @@
 #
 #   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
 #
+#   KERNEL_SUPPORTS_LLVM_TOOLS         = If set, switches ar, nm, objcopy, objdump to llvm tools instead of using GNU Binutils, optional
+#
 #   BOARD_KERNEL_IMAGE_NAME            = Built image name
 #                                          for ARM use: zImage
 #                                          for ARM64 use: Image.gz
@@ -227,6 +229,22 @@ ifeq ($(or $(FULL_RECOVERY_KERNEL_BUILD), $(FULL_KERNEL_BUILD)),true)
 # Add host bin out dir to path
 PATH_OVERRIDE := PATH=$(KERNEL_BUILD_OUT_PREFIX)$(HOST_OUT_EXECUTABLES):$$PATH
 ifneq ($(TARGET_KERNEL_CLANG_COMPILE),false)
+    # As 
+    ifeq ($(KERNEL_SUPPORTS_LLVM_TOOLS),true)
+        KERNEL_LD := LD=ld.lld
+        KERNEL_AR := AR=llvm-ar
+        KERNEL_OBJCOPY := OBJCOPY=llvm-objcopy
+        KERNEL_OBJDUMP := OBJDUMP=llvm-objdump
+        KERNEL_NM := NM=llvm-nm
+        KERNEL_STRIP := STRIP=llvm-strip
+    else
+        KERNEL_LD :=
+        KERNEL_AR :=
+        KERNEL_OBJCOPY :=
+        KERNEL_OBJDUMP :=
+        KERNEL_NM :=
+        KERNEL_STRIP :=
+    endif
     ifeq (,$(filter 5.10, $(TARGET_KERNEL_VERSION)))
         ifeq ($(KERNEL_ARCH),arm64)
             KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=aarch64-linux-gnu-
