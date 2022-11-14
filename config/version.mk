@@ -1,38 +1,33 @@
-PRODUCT_VERSION_MAJOR = 20
-PRODUCT_VERSION_MINOR = 0
+# Copyright (C) 2016 The Pure Nexus Project
+# Copyright (C) 2016 The JDCTeam
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
-else
-    LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
-endif
+RYZEN_MOD_VERSION := Athlon
+RYZEN_ANDROID = 13
+RYZEN_BUILD_TYPE := XT
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
-ifndef LINEAGE_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
-    endif
-endif
+RYZEN_VERSION := RyzenOS-$(RYZEN_MOD_VERSION)-$(RYZEN_ANDROID)-$(RYZEN_BUILD_TYPE)-$(CURRENT_DEVICE)-$(shell date -u +%Y%m%d)
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
-endif
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.ryzen.version=$(RYZEN_VERSION) \
+  ro.ryzen.ziptype=$(RYZEN_BUILD_ZIP_TYPE) \
+  ro.modversion=$(RYZEN_MOD_VERSION) \
+  ro.aosp.revision=$(AOSP_REVISION)
 
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
+RYZEN_DISPLAY_VERSION := Ryzen-$(RYZEN_MOD_VERSION)-$(RYZEN_BUILD_TYPE)
 
-LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
-
-# Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
-
-# Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+  ro.ryzen.display.version=$(RYZEN_DISPLAY_VERSION)
