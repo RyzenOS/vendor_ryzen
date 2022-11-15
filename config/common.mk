@@ -124,6 +124,9 @@ TARGET_INCLUDE_STOCK_ARCORE ?= false
 TARGET_INCLUDE_LIVE_WALLPAPERS ?= false
 TARGET_SUPPORTS_QUICK_TAP ?= true
 
+# RRO Overlays
+$(call inherit-product, vendor/ryzen/config/rro_overlays.mk)
+
 # Packages
 include vendor/ryzen/config/packages.mk
 
