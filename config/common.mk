@@ -68,6 +68,14 @@ PRODUCT_COPY_FILES += \
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
+# GMS
+$(warning "RyzenOS: Google apps are included")
+$(call inherit-product, vendor/gms/gms_mini.mk)
+TARGET_SUPPORTS_GOOGLE_RECORDER ?= false
+TARGET_INCLUDE_STOCK_ARCORE ?= false
+TARGET_INCLUDE_LIVE_WALLPAPERS ?= false
+TARGET_SUPPORTS_QUICK_TAP ?= true
+
 # SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
@@ -80,9 +88,6 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/ryzen/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/ryzen/overlay/common
 
 
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/ryzen/build/target/product/security/ryzen
-    
 # Bootanimation
 $(call inherit-product, vendor/ryzen/config/bootanimation.mk)
 
