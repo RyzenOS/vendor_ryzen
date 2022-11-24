@@ -19,6 +19,22 @@ RYZEN_BUILD_TYPE := XT
 
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
+ifeq ($(RYZEN_OFFICIAL), true)
+   LIST = $(shell cat infrastructure/devices/ryzen.devices | awk '$$1 != "#" { print $$2 }')
+    ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
+      IS_OFFICIAL=true
+      RYZEN_BUILD_TYPE := X
+
+PRODUCT_PACKAGES += \
+    Updater
+
+    endif
+    ifneq ($(IS_OFFICIAL), true)
+       RYZEN_BUILD_TYPE := XT
+       $(error Device is not official "$(CURRENT_DEVICE)")
+    endif
+endif
+
 RYZEN_VERSION := RyzenOS-$(RYZEN_MOD_VERSION)-$(RYZEN_ANDROID)-$(RYZEN_BUILD_TYPE)-$(CURRENT_DEVICE)-$(shell date -u +%Y%m%d)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
