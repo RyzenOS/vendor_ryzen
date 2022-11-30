@@ -2,7 +2,7 @@
 
 # Exports
 
-. vendor/aosp/build/tools/colors
+. vendor/ryzen/build/tools/colors
 
 export Changelog=Changelog.txt
 

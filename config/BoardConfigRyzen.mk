@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License
 
-include vendor/aosp/config/BoardConfigKernel.mk
+include vendor/ryzen/config/BoardConfigKernel.mk
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-include vendor/aosp/config/BoardConfigQcom.mk
+include vendor/ryzen/config/BoardConfigQcom.mk
 endif
 
-include vendor/aosp/config/BoardConfigSoong.mk
+include vendor/ryzen/config/BoardConfigSoong.mk

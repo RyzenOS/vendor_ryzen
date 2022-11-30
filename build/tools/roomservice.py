@@ -43,12 +43,12 @@ DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/roomservice.xml"
-custom_default_revision = "thirteen"
-custom_dependencies = "aosp.dependencies"
+custom_default_revision = "tiramisu"
+custom_dependencies = "ryzen.dependencies"
 org_manifest = ""  # leave empty if org is provided in manifest
 org_display = "  # needed for displaying
 
-custom_manifest = ".repo/manifests/custom.xml"
+ryzen_manifest = ".repo/manifests/ryzen.xml"
 hals_manifest = ".repo/manifests/hals.xml"
 
 github_auth = None
@@ -172,7 +172,7 @@ def is_in_manifest(project_path):
 def add_to_manifest(repos, fallback_branch=None):
     lm = load_manifest(custom_local_manifest)
     mlm = load_manifest(default_manifest)
-    customm = load_manifest(custom_manifest)
+    ryzenm = load_manifest(custom_manifest)
     halm = load_manifest(hals_manifest)
 
     for repo in repos:
@@ -201,8 +201,8 @@ def add_to_manifest(repos, fallback_branch=None):
         existing_m_project = None
         if exists_in_tree(mlm, repo_target) != None:
             existing_m_project = exists_in_tree(mlm, repo_target)
-        elif exists_in_tree(customm, repo_target) != None:
-            existing_m_project = exists_in_tree(customm, repo_target)
+        elif exists_in_tree(ryzenm, repo_target) != None:
+            existing_m_project = exists_in_tree(ryzenm, repo_target)
         elif exists_in_tree(halm, repo_target) != None:
             existing_m_project = exists_in_tree(halm, repo_target)
 

@@ -13,13 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include vendor/aosp/config/version.mk
+include vendor/ryzen/config/version.mk
 
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/aosp/overlay/common
+    vendor/ryzen/overlay/common
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    vendor/aosp/overlay/common
+    vendor/ryzen/overlay/common
 
 PRODUCT_PACKAGES += \
     NetworkStackOverlay \
@@ -32,7 +32,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # Enable Android Beam on all targets
 PRODUCT_COPY_FILES += \
-    vendor/aosp/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.nfc.beam.xml
+    vendor/ryzen/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.nfc.beam.xml
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -40,24 +40,24 @@ PRODUCT_COPY_FILES += \
 
 # init file
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init/init.custom-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.custom-system_ext.rc \
-    vendor/aosp/prebuilt/common/etc/init/init.custom-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.custom-updater.rc \
-    vendor/aosp/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
+    vendor/ryzen/prebuilt/common/etc/init/init.ryzen-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.ryzen-system_ext.rc \
+    vendor/ryzen/prebuilt/common/etc/init/init.ryzen-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.ryzen-updater.rc \
+    vendor/ryzen/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/aosp/build/tools/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aosp/build/tools/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aosp/build/tools/50-custom.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-custom.sh
+    vendor/ryzen/build/tools/backuptool.sh:install/bin/backuptool.sh \
+    vendor/ryzen/build/tools/backuptool.functions:install/bin/backuptool.functions \
+    vendor/ryzen/build/tools/50-ryzen.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-ryzen.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
-    system/addon.d/50-custom.sh
+    system/addon.d/50-ryzen.sh
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
-    vendor/aosp/build/tools/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/aosp/build/tools/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/aosp/build/tools/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/ryzen/build/tools/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/ryzen/build/tools/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/ryzen/build/tools/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/backuptool_ab.sh \
@@ -76,11 +76,11 @@ PRODUCT_COPY_FILES += \
 
 # Google Photos Pixel Exclusive XML
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/sysconfig/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
+    vendor/ryzen/prebuilt/common/etc/sysconfig/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
 
 # Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/sensitive_pn.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sensitive_pn.xml
+    vendor/ryzen/prebuilt/common/etc/sensitive_pn.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sensitive_pn.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -112,19 +112,19 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Audio
-include vendor/aosp/config/audio.mk
+include vendor/ryzen/config/audio.mk
 
 # Bootanimation
-include vendor/aosp/config/bootanimation.mk
+include vendor/ryzen/config/bootanimation.mk
 
 # GMS
-include vendor/aosp/config/gms.mk
+include vendor/ryzen/config/gms.mk
 
 # Packages
-include vendor/aosp/config/packages.mk
+include vendor/ryzen/config/packages.mk
 
 # Props
-include vendor/aosp/config/props.mk
+include vendor/ryzen/config/props.mk
 
 # Pixel Framework
 $(call inherit-product, vendor/pixel-framework/config.mk)
