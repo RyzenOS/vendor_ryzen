@@ -14,8 +14,11 @@
 # limitations under the License.
 
 RYZEN_MOD_VERSION := Athlon
-RYZEN_ANDROID = 13
-RYZEN_BUILD_TYPE := XT
+RYZEN_ANDROID = 13.0
+RYZEN_BUILD_TYPE := XT 
+
+# XT = UNOFFICIAL
+# X =  OFFICIAL
 
 RYZEN_DATE_YEAR := $(shell date -u +%Y)
 RYZEN_DATE_MONTH := $(shell date -u +%m)
@@ -45,13 +48,14 @@ RYZEN_VERSION := RyzenOS-$(RYZEN_MOD_VERSION)-$(RYZEN_ANDROID)-$(RYZEN_BUILD_TYP
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.ryzen.version=$(RYZEN_MOD_VERSION) \
+  ro.ryzen.android=$(RYZEN_ANDROID) \
+  ro.ryzen.buildtype=$(RYZEN_BUILD_TYPE) \
   ro.ryzen.ziptype=$(RYZEN_BUILD_ZIP_TYPE) \
   ro.ryzen.build_date=$(RYZEN_BUILD_DATE) \
   ro.ryzen.build_date_utc=$(RYZEN_BUILD_DATE_UTC) \
-  ro.modversion=$(RYZEN_MOD_VERSION) \
   ro.aosp.revision=$(AOSP_REVISION)
 
-RYZEN_DISPLAY_VERSION := $(RYZEN_ANDROID)-$(RYZEN_MOD_VERSION)-$(CURRENT_DEVICE)-$(RYZEN_BUILD_TYPE)
+RYZEN_DISPLAY_VERSION := $(RYZEN_MOD_VERSION)-$(RYZEN_ANDROID)-$(RYZEN_BUILD_TYPE)-$(CURRENT_DEVICE)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.ryzen.display.version=$(RYZEN_DISPLAY_VERSION)
