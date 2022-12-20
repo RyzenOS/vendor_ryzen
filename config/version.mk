@@ -54,6 +54,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
   ro.ryzen.build_date=$(RYZEN_BUILD_DATE) \
   ro.ryzen.build_date_utc=$(RYZEN_BUILD_DATE_UTC) \
   ro.aosp.revision=$(AOSP_REVISION)
+  ro.ryzen.maintainer=$(RYZEN_MAINTAINER)
 
 RYZEN_DISPLAY_VERSION := $(RYZEN_MOD_VERSION)-$(RYZEN_ANDROID)-$(RYZEN_BUILD_TYPE)-$(CURRENT_DEVICE)
 
