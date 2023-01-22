@@ -137,5 +137,3 @@ PRODUCT_PACKAGES += \
 # Props
 include vendor/ryzen/config/props.mk
 
-# Pixel Framework
-$(call inherit-product, vendor/pixel-framework/config.mk)
