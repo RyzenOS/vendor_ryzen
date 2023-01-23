@@ -2,7 +2,7 @@
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
 # telephony
-$(call inherit-product, vendor/proton/config/telephony.mk)
+$(call inherit-product, vendor/ryzen/config/telephony.mk)
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -26,7 +26,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Google LILY_EXPERIENCE feature
 PRODUCT_COPY_FILES += \
-    vendor/proton/prebuilt/common/etc/sysconfig/lily_experience.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/lily_experience.xml
+    vendor/ryzen/prebuilt/common/etc/sysconfig/lily_experience.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/lily_experience.xml
 
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 # Disable ADB authentication
@@ -48,9 +48,9 @@ endif
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.launcher.blur.appLaunch=0
 
-# ProtonPlus-specific init rc file
+# RyzenOS-specific init rc file
 PRODUCT_COPY_FILES += \
-    vendor/proton/prebuilt/common/etc/init/init.proton-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.proton-system_ext.rc
+    vendor/ryzen/prebuilt/common/etc/init/init.ryzen-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.ryzen-system_ext.rc
 
 # Enable gestural navigation overlay to match default navigation mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -58,7 +58,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # priv-app permissions
 PRODUCT_COPY_FILES += \
-    vendor/proton/prebuilt/common/etc/permissions/priv-app_system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/priv-app_system.xml
+    vendor/ryzen/prebuilt/common/etc/permissions/priv-app_system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/priv-app_system.xml
 
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -75,16 +75,16 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-# protonplus packages
+# RyzenOS packages
 PRODUCT_PACKAGES += \
     RepainterServicePriv
 
-ifeq ($(PROTON_BUILD_VARIANT),OFFICIAL)
+ifeq ($(RYZEN_BUILD_VARIANT),OFFICIAL)
 PRODUCT_PACKAGES += \
     Updater
 
 PRODUCT_COPY_FILES += \
-    vendor/proton/prebuilt/common/etc/init/init.proton-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.proton-updater.rc
+    vendor/ryzen/prebuilt/common/etc/init/init.ryzen-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.ryzen-updater.rc
 endif
 
 # Config
@@ -95,7 +95,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.disable_rescue=true
 
-# Extra tools in ProtonPlus
+# Extra tools in RyzenOS
 PRODUCT_PACKAGES += \
     7z \
     bash \
@@ -130,7 +130,7 @@ PRODUCT_PACKAGES += \
     start-ssh
 
 PRODUCT_COPY_FILES += \
-    vendor/proton/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
+    vendor/ryzen/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
 
 # rsync
 PRODUCT_PACKAGES += \
@@ -166,10 +166,10 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.systemuicompilerfilter=speed
 
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/proton/overlay/no-rro
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/ryzen/overlay/no-rro
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/proton/overlay/common \
-    vendor/proton/overlay/no-rro
+    vendor/ryzen/overlay/common \
+    vendor/ryzen/overlay/no-rro
 
 # Enable support of one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -188,7 +188,7 @@ PRODUCT_PACKAGES += \
     BlackTheme
 
 # BootAnimation
-include vendor/proton/config/bootanimation.mk
+include vendor/ryzen/config/bootanimation.mk
 
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= true
@@ -202,6 +202,6 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Fonts
-include vendor/proton/config/fonts.mk
+include vendor/ryzen/config/fonts.mk
 
-include vendor/proton/config/version.mk
+include vendor/ryzen/config/version.mk
