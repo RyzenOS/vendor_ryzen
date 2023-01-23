@@ -1,4 +1,4 @@
-# ProtonPlus core functionality
+# RyzenOS core functionality
 on init
     export TERMINFO /system_ext/etc/terminfo
 
