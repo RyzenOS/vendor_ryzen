@@ -44,6 +44,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.ota.allow_downgrade=true
 endif
 
+# Backup Tool
+PRODUCT_COPY_FILES += \
+    vendor/ryzen/build/tools/backuptool.sh:install/bin/backuptool.sh \
+    vendor/ryzen/build/tools/backuptool.functions:install/bin/backuptool.functions \
+    vendor/ryzen/build/tools/50-ryzen.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-ryzen.sh
+
 # Disable blur on app-launch
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.launcher.blur.appLaunch=0
