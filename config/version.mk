@@ -32,7 +32,7 @@ RYZEN_BUILD_DATE := $(RYZEN_DATE_YEAR)$(RYZEN_DATE_MONTH)$(RYZEN_DATE_DAY)-$(RYZ
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
 ifeq ($(RYZEN_OFFICIAL), true)
-   LIST = $(shell cat infrastructure/devices/ryzen.devices | awk '$$1 != "#" { print $$2 }')
+   LIST = $(shell cat official/ryzen.devices)
     ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
       IS_OFFICIAL=true
       RYZEN_BUILD_TYPE := X

@@ -45,8 +45,8 @@ default_manifest = ".repo/manifest.xml"
 custom_local_manifest = ".repo/local_manifests/roomservice.xml"
 custom_default_revision = "tiramisu"
 custom_dependencies = "ryzen.dependencies"
-org_manifest = ""  # leave empty if org is provided in manifest
-org_display = "  # needed for displaying
+org_manifest = "ryzenos-devices"  # leave empty if org is provided in manifest
+org_display = "RyzenOS-Devices"  # needed for displaying
 
 ryzen_manifest = ".repo/manifests/ryzen.xml"
 hals_manifest = ".repo/manifests/hals.xml"
